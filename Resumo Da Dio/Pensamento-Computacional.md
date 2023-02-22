@@ -1,1 +1,6 @@
-## Este é um {c:red}texto vermelho.{/c}
+## Pensamento Computacional
+
+#### 	
+
+Este é um {c:#B81365}texto colorido com hexadecimal{/c} 
+
