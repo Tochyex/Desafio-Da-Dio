@@ -8,7 +8,7 @@
 
 #### Decomposição = ***_É basicamente quando você tem um grande problema para resolver e você divide ele em partes para resolver ele por pedaços, assim você consegue resolver o problema por partes_.***
 
-#### Reconhecimento de Padrões= ***_Como nós somos muito bons com o reconhecimento de padrões, nesse pilar reconhecemos as semelhanças e as diferenças do problema_***
+#### Reconhecimento de Padrões = ***_Como nós somos muito bons com o reconhecimento de padrões, nesse pilar reconhecemos as semelhanças e as diferenças do problema_***
 
 #### Abstração = **_Nesse pilar você tentar encontrar uma forma generalizada para resolver o problema como por ex: se eu usar a formula (C = 2.pi.r) se eu conseguir parametrizar um circulo qualquer eu consigo generalizar ele usando aquela formula_**
 
