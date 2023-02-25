@@ -28,7 +28,7 @@ Já essa técnica ela não é linear então podemos ter algumas opções como ao
 
 ##### 																																															
 
-##### === Acordar 	:arrow_right:  Descer escadas 	:arrow_right:  Café ou Suco	:arrow_right: 	Tomar café da manhã
+##### === Acordar 	:arrow_right:  Descer escadas 	:arrow_right:  Café ou Suco	:arrow_right: 	Tomar café da manhã ===
 
 
 
