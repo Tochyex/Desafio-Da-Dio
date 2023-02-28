@@ -40,9 +40,126 @@ Vamos falar um pouco sobre o sha1 que é um sigla que significa "Secure hash alg
 
 #### Objetos internos do Git 
 
-O git lida 
+O git lida com objetos ele manipula através de objetos então os arquivos são armazenado em um objeto chamado **Blob**. ele guarda meta dados ele consegue guardar o tipo de objeto, o tamanho da string ou do arquivo entre outros.
+
+Temos que ter cuidado na hora de gerar o sha1 porque como o arquivo vai estar dentro do blob ele pode gerar outro sha1 vou dar exemplos.
+
+> echo 'conteúdo' | git hash-object --stdin
+>
+> | > 40 caracteres
+
+fazendo essa função irá mostrar o sha1, usamos a flag stdin porque o git hash espera receber um arquivo e a flag esta avisando que vai apenas inserir uma mensagem e caso usarmos o **openssl** ele vai nos gera outro tipo de sha como no exemplo abaixo
+
+> echo -e 'conteúdo' | openssl sha1
+>
+> | > 40 caracteres diferente do primeiro
+
+Basicamente a gente pediu pra encriptar o conteúdo fora da blob então ele nos mostra outro tipo de sha.
+
+Para ele encripte dentro da blob usamos a seguinte função
+
+> echo -e 'blob 9/0conteudo' | openssl sha1
+>
+> | > 40 caractere
+
+ como eu citei ali em cima a nossa função tem o tipo de objeto, o tamanho da string e o conteúdo.
+
+#### Trees = arvores 
+
+As trees também guardam meta dados mas diferente das blobs ela guarda o nome e o sha1 dos arquivos enquanto as blobs apenas o sha1 , uma trees pode apontar para outras blobs ou então outras trees.
 
 
 
+Tree  - lib :arrow_right: tree - simplegit.rb :arrow_right:  blob	
+
+:arrow_down:
+
+blob 
 
 
+
+**Commit**
+
+Commit = esse objeto é o que vai ligar todos outros
+
+tree = pode apontar outra tree ou uma blob
+
+parente = é o ultimo commit que foi dado antes dele
+
+autor = é o dono do arquivou ou código, o criador
+
+mensagem = aponta uma mensagem
+
+timestamp = o commit guarda também a hora e a data de quando foi criado
+
+E isso é o que o commit guarda como metadados
+
+
+
+O legal é que como o commit também possui um sha1 se eu alterar alguma coisa que ele esta ligado ele vai mudar todo o sha1 de todos, então não vai ter como mudar nada no arquivo sem que você saiba.
+
+
+
+#### Chave SSH
+
+A chave ssh é um processo que cria uma conexão encriptada entre 2 maquinas de forma segura, sendo assim teremos 2 chaves 1 publica e 1 privada. E iremos usar a chave publica para se conectar ao servidor do github
+
+
+
+#### Criando a chve SSH
+
+ssh- keygen -t ed25519 -C kaiquedeveza@hotmail.com
+
+
+
+Logo depois o git criar essa chave na pasta .ssh mais pra frente podemos mudar. Logo depois dando enter ele vai pedir uma senha e ai vai dizer onde a chave foi salva criando também a chave publica com o nome  .pub no final e cria uma **finger print(um tipo de identidade para a chave)**, o ed25519 é o tipo de criptografia que você ai usar ali no código.
+
+Depois disso podemos ir até a pasta onde foi criada a .ssh e abrindo com o git bash listamos os arquivos usando o comando **ls** e vai ter dois arquivos **id_ed25519(nossa chave privada)** e outro chamado **id_ed25519.pub(nossa chave publica)**.
+
+Usando o comando **cat id_ed25519.pub** ele vai nos mostrar o conteúdo da chave, depois usamos o conteúdo mostrado no github na parte de chaves ssh.
+
+Depois usamos o comando **eval $(ssh-agent -s)** que um inicializador que lida com as chaves.
+
+Logo depois usamos o **ssh-add id_ed25519** após fazermos isso entregamos a chave pro agente e através disso toda mensagem criptografada que chegar com essa chave ele vai usar essa chave pra descriptografar a mensagem, logo após todo esse processo ele vai perguntar a senha que você criou lá no começo.
+
+
+
+#### Clonando um repositório do github 
+
+Podemos clonar repositórios usando o comando **git clone (e o link copiado em ssh ou https la no github).**
+
+**Token de acesso pessoal**
+
+A segunda forma de autenticação é indo no github e ir na parte de settigs/developers settings/personal acces tokens e se voce for usar as config padrão do git apenas a caixa marcada com o nome de repo basta depois disso é só copiar o link https do github e usar o comando **git clone(Link https) logo depois disso o github vai pedir o token criado pra logar e clonar o arquivo.
+
+Podemos usar o comando **git init** no repositório para o git começar a gerenciar e versionar o código(novas versões e alterações).Precisamos também configurar algumas coisas já que mais pra frente iremos gerar um comit e ele sempre pede um autor
+
+
+
+> git config --global user.email 'de preferencia use seu email cadastrado no github'
+>
+> git config -- global user.name 'também o nome criado no github'
+
+   
+
+#### Gerando um commit 
+
+Usamos o codigo git commit -m 'commit inicial' e assim trazendo algumas info sendo uma delas o sh1 criado antes
+
+
+
+#### Ciclo de vida no git 
+
+No git assim que você cria um repositório ou um arquivo o git ainda não sabe que ele existe até você dizer pra ele que ele existe e esses tipos de arquivo nós chamamos ele de Untraked, e no git temos alguns "ciclo" que cada arquivo precisa passar sendo eles o Untraked que acabamos de citar, Unmodified, Modified e staged .
+
+
+
+Unmodified: É o arquivo que não sofreu nenhuma modificação
+
+
+
+Modified: É o arquivo que já sofreu alguma modificação
+
+
+
+Staged: Nessa parte os arquivos já estão prontos para fazer suas determinada função eles ficam ali só esperando você dar os comando para eles 
