@@ -10,7 +10,7 @@ Quando usamos o git temos alguns comando diferente quando usamos ele no windows 
 
 Cd, dir, mkdir, del/rmdir
 
-**Linux**
+Iunix
 
 cd, ls, mkdir, rm -rf
 

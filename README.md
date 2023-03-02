@@ -13,3 +13,12 @@ Resumo dos estudos
 - Variáveis
 - Estrutura Condicional  
 
+### *Git e Github :pushpin:*
+
+- Git
+- Funcoes dos comandos do git 
+- Sha1
+- Obejetos internos do Git
+- Chave ssh
+- Gerando commit
+- Ciclo de vida no git 
