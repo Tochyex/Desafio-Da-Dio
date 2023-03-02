@@ -150,7 +150,7 @@ Usamos o codigo git commit -m 'commit inicial' e assim trazendo algumas info sen
 
 #### Ciclo de vida no git 
 
-No git assim que você cria um repositório ou um arquivo o git ainda não sabe que ele existe até você dizer pra ele que ele existe e esses tipos de arquivo nós chamamos ele de Untraked, e no git temos alguns "ciclo" que cada arquivo precisa passar sendo eles o Untraked que acabamos de citar, Unmodified, Modified e staged .
+No git assim que você cria um repositório ou um arquivo o git ainda não sabe que ele existe até você dizer pra ele que ele existe e esses tipos de arquivo nós chamamos ele de Untracked, e no git temos alguns "ciclo" que cada arquivo precisa passar sendo eles o Untracked que acabamos de citar, Unmodified, Modified e staged .
 
 
 
@@ -163,3 +163,26 @@ Modified: É o arquivo que já sofreu alguma modificação
 
 
 Staged: Nessa parte os arquivos já estão prontos para fazer suas determinada função eles ficam ali só esperando você dar os comando para eles 
+
+
+
+Quando o arquivo está untracked e usando o comando **add** ele passa direto pro staged logo depois disso quando damos o **commit** ele fica unmodified e após mexer em alguma coisa no arquivo ele passa pra uodified e ai usamos o mesmo comando **add** e ele volta a ficar staged e o ciclo se repete. 
+
+
+
+Usando o comando **git status** ele vai nos dizer se precisamos dar algum commit se tem algum arquivo modificado e etc, temos também o comando **mv** que move arquivos e usando ./nomearquivo/ ele busca outro repositório. 
+
+
+
+#### Repositório no github 
+
+Conseguimos linkar o git e o github, no github criando um novo repositório usamos um comando no git que é **git remote add origin(link que foi dado no github)**,e usando o git remote -v ele vai listar os repositórios cadastrados.
+
+E usando o **git push origin main** ele manda o repositório para o github 
+
+
+
+#### Resolvendo conflitos
+
+Caso o nosso repositório for editado e tentarmos dar um push vai gerar um conflito por que o nosso repositório esta desatualizado , após abrir o arquivo e fazer as modi devidas vamos dar um commit, e usando o comando git pull origin master puxamos os arquivos do github que foi editado para nossa maquina para resolvermos o problema 
+
